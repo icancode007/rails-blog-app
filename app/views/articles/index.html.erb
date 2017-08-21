@@ -1,18 +1,37 @@
 <h1> All Articles </h1>
-  <%=link_to "Create New Article",new_article_path %>
 
-  <table>
-    <tr>
-      <th>title<th>
-      <th>Description<th>
-    </tr>
-      <% @articles.each do |article| %>
-    <tr>
-      <td><%=article.title%> </td>
-      <td><%=article.description%></td>
-      <td><%=link_to "Edit", edit_article_path(article)%> </td>
-      <td><%=link_to "Show", article_path(article)%> </td>
-      <td><%=link_to "Delete",article_path(article), method: :delete,data: {confirm: "Are you sure?"}%></td>
-    </tr>
-      <% end %>
+  <div class="container">
+    <h2>Hover Rows</h2>
+    <%=link_to "Create New Article",new_article_path, id:"tableheadlink"%>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>title</th>
+          <th>Description</th>
+          <th>Edit</th>
+          <th>Show</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+       <tbody>
+        <% @articles.each do |article| %>
+          <tr>
+            <td><%=article.title%> </td>
+            <td><%=article.description%></td>
+            <td>
+              <%=link_to edit_article_path(article) do %>
+                <%= fa_icon "pencil-square-o" %>
+              <% end %>
+            </td>
+            <td><%=link_to article_path(article) do %>
+               <%= fa_icon "eye" %>
+              <%end%>
+            </td>
+            <td><%=link_to article_path(article), method: :delete,data: {confirm: "Are you sure?"} do %>
+                <%= fa_icon "trash" %>
+              <%end%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
   </table>

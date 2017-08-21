@@ -1,2 +1,17 @@
+$navbar-default-bg:gray;
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+#logo{
+  font-family: Arial;
+  color:white;
+  letter-spacing: 0.3em;
+  font-weight: bold;
+
+}
+
+#tableheadlink{
+  margin-bottom: 20px;
+  float: right;
+}
