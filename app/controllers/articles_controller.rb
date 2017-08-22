@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :set_article,only:[:edit,:update,:show,:destroy]
+  before_action :set_article, only: [:edit,:update,:show,:destroy]
 
   def new
     @article = Article.new
@@ -14,7 +14,9 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    debugger
     @article = Article.new(article_params)
+    @article.user = User.find(4)
     if @article.save
       flash[:notice] = "Article was successfully created"
       redirect_to article_path(@article)

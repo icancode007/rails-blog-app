@@ -1,13 +1,15 @@
 <h1> All Articles </h1>
 
   <div class="container">
-    <h2>Hover Rows</h2>
+    <h2>Article Feed</h2>
     <%=link_to "Create New Article",new_article_path, id:"tableheadlink"%>
     <table class="table table-hover">
       <thead>
         <tr>
+          <th>User</th>
           <th>title</th>
           <th>Description</th>
+          <th>Created</th>
           <th>Edit</th>
           <th>Show</th>
           <th>Delete</th>
@@ -16,8 +18,10 @@
        <tbody>
         <% @articles.each do |article| %>
           <tr>
+            <td><%= article.user.username%></td>
             <td><%=article.title%> </td>
             <td><%=article.description%></td>
+            <td><%=time_ago_in_words(article.created_at)%></td>
             <td>
               <%=link_to edit_article_path(article) do %>
                 <%= fa_icon "pencil-square-o" %>
