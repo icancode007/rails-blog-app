@@ -14,7 +14,6 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    debugger
     @article = Article.new(article_params)
     @article.user = User.find(4)
     if @article.save
