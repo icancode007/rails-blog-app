@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :show]
-  before_action :require_current_user, only:[:edit]
+  before_action :require_current_user, only:[:edit, :update, :destroy]
+  before_action :require_admin, only: [:destroy]
   def new
     @user = User.new
   end
@@ -34,6 +35,13 @@ class UsersController < ApplicationController
 
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:danger] = "User profile and It's content deleted"
+    redirect_to users_path
+  end
+
   def index
     @users = User.all
   end
@@ -48,8 +56,14 @@ class UsersController < ApplicationController
     end
 
     def require_current_user
-      if current_user != @user
+      if current_user != @user and !current_user.admin?
         flash[:danger] = "You can only edit your own account"
+      end
+    end
+
+    def require_admin
+      if logged_in? and !current_user.admin?
+        flash[:danger] = "You are not allowed to do that"
       end
     end
 
