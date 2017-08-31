@@ -7,7 +7,14 @@
           <li class="article-title">
             <%= link_to "#{category.name}", category_path(category)%>
           </li>
+          <li>
             <small>Articles:<%= category.articles.count %></small>
+          </li>
+          <%if logged_in? and current_user.admin? %>
+            <li>
+              <%= link_to "edit", edit_category_path(category), :class => "btn btn-danger btn-xs"%>
+            </li>
+          <% end %>
         </div>
       </div>
     </ul>
