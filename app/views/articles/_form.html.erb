@@ -1,17 +1,22 @@
 <%= render 'shared/errors', obj: @article %>
   <div class="container">
     <%= form_for(@article) do |f| %>
-        <p>
+        <div class="form-group">
           <%= f.label :title %><br/>
           <%= f.text_field :title, :class => 'form-control'%>
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
           <%= f.label :description %><br/>
           <%= f.text_area :description,:class => 'form-control', :rows => '3', :cols =>'3'%>
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
+          <%= f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+            <% cb.label(class: "checkbox-inline input_checkbox"){cb.check_box(class: "checkbox")+ cb.text}%>
+          <%end%>
+        </div>
+        <div class="form-group">
           <%= f.submit :class => 'btn btn-primary' %>
-        </p>
+        </div>
       <% end %>
     <%= link_to "All Articles", articles_path%>
   </div>
