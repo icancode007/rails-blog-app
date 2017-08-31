@@ -1,3 +1,11 @@
-<h2> Welcome to Alpha-blog </h2>
-
-<%= link_to "Articles", articles_path %> | <%= link_to "About", about_path %>
+<h2> Welcome to Article </h2>
+<div class="container">
+  <div class='links'>
+    <%= link_to " Articles ", articles_path, :class =>"unlogged_link" %>
+    <p class="unlogged_link">|</p>
+    <%= link_to "About ", about_path, :class => "unlogged_link" %>
+  </div>
+  <div align="center" class="unlogged_img">
+    <%= image_tag('blogwall.png')%>
+  </div>
+</div>
