@@ -1,24 +1,8 @@
 # README
+Rails Blog App.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The app was build to put in use the fundamentals needed for a rails User Interactive app. It also has an administrative profile to limit clients actions.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+The Purpose was to practice the fundamentals of other languages using rails. Some of those fundamentals were MVC, migrations, models, associations, authentication and others.
 
 * ...
